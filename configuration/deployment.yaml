@@ -1,1 +1,19 @@
-# TODO
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todak-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todak-app
+  template:
+    metadata:
+      labels:
+        app: todak-app
+    spec:
+      containers:
+        - name: todak-app
+          image: asia.gcr.io/kuba-310814/todak-app:0.1
+          ports:
+          - containerPort: 8080
