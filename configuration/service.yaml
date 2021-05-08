@@ -1,1 +1,13 @@
-# TODO
+apiVersion: v1
+kind: Service
+metadata:
+  name: todak-app-service
+  namespace: todak
+spec:
+  type: ClusterIP
+  selector:
+    app: todak-app-probe
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

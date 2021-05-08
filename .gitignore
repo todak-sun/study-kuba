@@ -33,7 +33,6 @@ out/
 /nbdist/
 /.nb-gradle/
 
-<<<<<<< HEAD
 # Package Files #
 *.jar
 *.war
@@ -49,7 +48,8 @@ hs_err_pid*
 .idea
 .gradle
 **/build/**
-=======
+spring.log
+
 ### VS Code ###
 .vscode/
 >>>>>>> main

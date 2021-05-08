@@ -1,1 +1,35 @@
-# TODO
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todak-app-probe
+  namespace: todak
+  labels:
+    app: todak-app-probe
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todak-app-probe
+  template:
+    metadata:
+      labels:
+        app: todak-app-probe
+    spec:
+      containers:
+        - name: todak-app-probe
+          image: asia.gcr.io/kuba-310814/todak-app:0.2
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - cat
+                - /usr/local/app/logs/spring.log
+            initialDelaySeconds: 15
+            periodSeconds: 10
